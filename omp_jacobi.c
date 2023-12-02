@@ -85,7 +85,7 @@ int main ( )
   Difference.
 */
       d = 0.0;
-#pragma omp for
+#pragma omp for reduction(+:d)
       for ( i = 0; i < n; i++ )
       {
 	#pragma omp critical
@@ -103,7 +103,7 @@ int main ( )
   Residual.
 */
       r = 0.0;
-#pragma omp for
+#pragma omp for reduction(+:r)
       for ( i = 0; i < n; i++ )
       {
         t = b[i] - 2.0 * x[i];
